@@ -84,7 +84,7 @@ You can preview the following URL to confirm that nginx web server is working: h
 
 This is the ARM template that I have developed. This template automates the deployment of an Azure App Service
 with the Web App running a specific Docker image. Since this is made for a personal use, I used the Free Tier of the Azure App Service.
-
+```
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -117,7 +117,7 @@ with the Web App running a specific Docker image. Since this is made for a perso
     }
   ]
 }
-
+```
 ## ☁️ Continuous Deployment
 
 In this task, I achieved the automated deployment of the application to Azure whenever
