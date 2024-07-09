@@ -31,12 +31,13 @@ To get started with this project, follow these steps:
 
 docker build -t myapp:latest ./web-app
 docker run -d -p 8080:80 myapp:latest
-
+```
+```
 ## ☁️ Building & Continuous Integration
 
 In this step, I used the free template for a simple static web application.
 After that, I created a workflow file:
-
+```
 name: CI
 
 on: [push]
@@ -51,21 +52,21 @@ jobs:
 
     - name: Run a one-line script
       run: echo Hello, world!
-
+```
 After this, I commited and pushed the changes.
 
 ## ☁️ Dockerfile
 
 In this task, I created a dockerfile with the following content:
-
+```
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
-
+```
 After that, I built a docker Image and pushed the Docker image to Docker hub.
-
+```
 docker tag myapp:latest mikkasa/myapp:latest
 docker push mikkasa/myapp:latest
-
+```
 ## ☁️ Cloud Deployment
 
 In this task, I created a resource "Azure Container Registry" and pushed the Docker images
@@ -126,7 +127,9 @@ changes are pushed to the main branch of the GitHub repository. The YAML file is
 name: CI/CD
 
 on: [push]
+
 #tete2te33222
+
 jobs:
   build:
     runs-on: ubuntu-latest
