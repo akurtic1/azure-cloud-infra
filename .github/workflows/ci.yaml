@@ -24,7 +24,7 @@ jobs:
 
     - name: Push Docker image to ACR
       run: |
-        docker tag myapp:latest azurecloudregistry .azurecr.io/myapp:latest
+        docker tag myapp:latest azurecloudregistry.azurecr.io/myapp:latest
         docker push azurecloudregistry.azurecr.io/myapp:latest
 
     - name: Deploy to Azure Web App
