@@ -20,12 +20,12 @@ jobs:
 
     - name: Log in to Azure Container Registry
       run: |
-        echo ${{ secrets.CONTAINER_REGISTRY_PASSWORD }} | docker login azurecloudregistry .azurecr.io --username ${{ secrets.CONTAINER_REGISTRY_USERNAME }} --password-stdin
+        echo ${{ secrets.CONTAINER_REGISTRY_PASSWORD }} | docker login azurecloudregistry.azurecr.io --username ${{ secrets.CONTAINER_REGISTRY_USERNAME }} --password-stdin
 
     - name: Push Docker image to ACR
       run: |
         docker tag myapp:latest azurecloudregistry .azurecr.io/myapp:latest
-        docker push azurecloudregistry .azurecr.io/myapp:latest
+        docker push azurecloudregistry.azurecr.io/myapp:latest
 
     - name: Deploy to Azure Web App
-      run: az webapp create --resource-group azure-cloud-infra --plan MyAppServicePlan --name mywebappinfra --deployment-container-image-name azurecloudregistry .azurecr.io/myapp:latest
+      run: az webapp create --resource-group azure-cloud-infra --plan MyAppServicePlan --name mywebappinfra --deployment-container-image-name azurecloudregistry.azurecr.io/myapp:latest
