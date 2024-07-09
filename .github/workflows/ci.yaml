@@ -29,4 +29,4 @@ jobs:
       run: docker push azurecloudregistry.azurecr.io/myapp:latest
 
     - name: Deploy to Azure Web App
-      run: az webapp create --resource-group azure-cloud-infra --plan MyAppServicePlan --name mywebappinfra --deployment-container-image-name azurecloudregistry.azurecr.io/myapp:latest
+      run: az webapp create --resource-group azure-cloud-infra --plan azurecloudservice --name mywebappinfra --deployment-container-image-name azurecloudregistry.azurecr.io/myapp:latest
