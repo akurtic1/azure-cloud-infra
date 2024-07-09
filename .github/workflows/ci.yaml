@@ -1,0 +1,32 @@
+name: CI/CD
+
+on: [push]
+#tete2te33222
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t myapp:latest .
+
+    - name: Log in to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Log in to Azure Container Registry
+      run: |
+        echo ${{ secrets.CONTAINER_REGISTRY_PASSWORD }} | docker login azurecloudregistry.azurecr.io --username ${{ secrets.CONTAINER_REGISTRY_USERNAME }} --password-stdin
+
+    - name: Tag Docker image
+      run: docker tag myapp:latest azurecloudregistry.azurecr.io/myapp:latest
+
+    - name: Push Docker image to ACR
+      run: docker push azurecloudregistry.azurecr.io/myapp:latest
+
+    - name: Deploy to Azure Web App
+      run: az webapp create --resource-group azure-cloud-infra --plan azurecloudservice --name mywebappinfra --deployment-container-image-name azurecloudregistry.azurecr.io/myapp:latest
