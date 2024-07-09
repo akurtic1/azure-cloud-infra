@@ -25,14 +25,15 @@ Technologies used:
 To get started with this project, follow these steps:
 
 1. **Clone the repository:**
-   ```bash
+```
+ bash
    git clone https://github.com/akurtic1/azure-cloud-infra
    cd my-dockerized-app
 
 docker build -t myapp:latest ./web-app
 docker run -d -p 8080:80 myapp:latest
 ```
-```
+
 ## ☁️ Building & Continuous Integration
 
 In this step, I used the free template for a simple static web application.
